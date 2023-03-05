@@ -1,10 +1,23 @@
 package converter
 
 fun main() {
-    println("145 centimeters is 1.45 meters\n" +
-            "2 miles is 3.2187 kilometers\n" +
-            "5.5 inches is 139.7 millimeters\n" +
-            "12 degrees Celsius is 53.6 degrees Fahrenheit\n" +
-            "3 pounds is 1.360776 kilograms"
+    print("Enter a number and a measure: ")
+    val (value, type) = readln().split(" ")
+
+    when (type.lowercase()) {
+        "km" -> kilometersToMeters(value.toInt())
+        "kilometer" -> kilometersToMeters(value.toInt())
+        "kilometers" -> kilometersToMeters(value.toInt())
+        else -> println("Wrong input")
+    }
+}
+
+fun kilometersToMeters(value: Int) {
+    println(
+        if (value == 1) {
+            "$value kilometer is 1000 meters"
+        } else {
+            "$value kilometers is ${value * 1000} meters"
+        }
     )
 }
